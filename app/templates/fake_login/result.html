@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h2 class="text-success">
+                        ✔ Simulation Completed
+                    </h2>
+
+                    <hr>
+
+                    <h3>
+                        {{ platform }} Login Simulation
+                    </h3>
+
+                    <p class="lead">
+                        This page demonstrated how a phishing website can imitate
+                        a legitimate login page.
+                    </p>
+
+                    <div class="alert alert-warning">
+
+                        <h4>Security Awareness</h4>
+
+                        <p class="mb-2">
+                            Never enter your credentials unless you have verified:
+                        </p>
+
+                        <ul class="text-start">
+                            <li>✔ Website URL</li>
+                            <li>✔ HTTPS (Secure Connection)</li>
+                            <li>✔ Correct Domain Name</li>
+                            <li>✔ No spelling mistakes</li>
+                            <li>✔ Trusted source</li>
+                        </ul>
+
+                    </div>
+
+                    <h3>
+
+                        Awareness Score
+
+                        <span class="badge bg-success">
+                            {{ score }}%
+                        </span>
+
+                    </h3>
+
+                    <br>
+
+                    <a href="{{ url_for('dashboard.home') }}" class="btn btn-primary">
+
+                        Back to Dashboard
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

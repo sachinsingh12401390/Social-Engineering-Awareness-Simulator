@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-5">
+
+            <div class="card shadow">
+
+                <div class="card-body">
+
+                    <h2 class="text-center mb-4">
+                        Instagram Login
+                    </h2>
+
+                    <form method="POST" action="{{ url_for('fake_login.result') }}">
+
+                        <input type="hidden" name="platform" value="Instagram">
+
+                        <div class="mb-3">
+
+                            <label>Username</label>
+
+                            <input type="text" class="form-control" placeholder="Username" required>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label>Password</label>
+
+                            <input type="password" class="form-control" placeholder="Password" required>
+
+                        </div>
+
+                        <button class="btn btn-dark w-100">
+                            Log In
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

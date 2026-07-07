@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <h2 class="text-center mb-4">
+                📱 SMS Phishing (Smishing) Simulator
+            </h2>
+
+            <p class="text-center text-muted">
+                Read each SMS carefully and identify whether it is Safe or Phishing.
+            </p>
+
+            <form method="POST" action="{{ url_for('sms.result') }}">
+
+                {% for sms in messages %}
+
+                {% set q = loop.index0 %}
+
+                <div class="card mb-4 border-primary">
+
+                    <div class="card-header bg-primary text-white">
+
+                        <strong>{{ sms.sender }}</strong>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <p style="font-size:18px">
+
+                            {{ sms.message }}
+
+                        </p>
+
+                        <hr>
+
+                        <div class="form-check">
+
+                            <input class="form-check-input" type="radio" name="q{{ q }}" value="safe" required>
+
+                            <label class="form-check-label">
+
+                                ✅ Safe
+
+                            </label>
+
+                        </div>
+
+                        <div class="form-check">
+
+                            <input class="form-check-input" type="radio" name="q{{ q }}" value="phishing">
+
+                            <label class="form-check-label">
+
+                                🚨 Phishing
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+                <div class="text-center">
+
+                    <button class="btn btn-success btn-lg">
+
+                        Submit Answers
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

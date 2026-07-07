@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-body text-center p-5">
+
+                    <h1 class="text-success">
+                        🎉 Simulation Completed
+                    </h1>
+
+                    <hr>
+
+                    <h3 class="mt-4">
+                        Your Score
+                    </h3>
+
+                    <h2 class="text-primary">
+                        {{ score }}
+                    </h2>
+
+                    <p class="text-muted mt-4">
+                        This was a phishing awareness simulation.
+                        Never enter your password on suspicious websites.
+                        Always verify the sender and the website URL before logging in.
+                    </p>
+
+                    <div class="mt-5">
+
+                        <a href="{{ url_for('dashboard.home') }}" class="btn btn-primary me-2">
+                            Back to Dashboard
+                        </a>
+
+                        <a href="{{ url_for('email.home') }}" class="btn btn-success">
+                            Try Again
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

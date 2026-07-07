@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4">
+        Admin Dashboard
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow text-center">
+
+                <div class="card-body">
+
+                    <h2>{{ total_users }}</h2>
+
+                    <p class="mb-0">
+                        Total Users
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow text-center">
+
+                <div class="card-body">
+
+                    <h2>{{ total_simulations }}</h2>
+
+                    <p class="mb-0">
+                        Total Simulations
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow text-center">
+
+                <div class="card-body">
+
+                    <h2>{{ completed }}</h2>
+
+                    <p class="mb-0">
+                        Completed
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow text-center">
+
+                <div class="card-body">
+
+                    <h2>{{ average_score }}%</h2>
+
+                    <p class="mb-0">
+                        Average Score
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <hr class="my-5">
+
+    <h3 class="mb-3">
+        Recent Simulations
+    </h3>
+
+    <table class="table table-bordered table-hover">
+
+        <thead class="table-dark">
+
+            <tr>
+
+                <th>User ID</th>
+
+                <th>Simulation</th>
+
+                <th>Score</th>
+
+                <th>Status</th>
+
+                <th>Date</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% if recent_simulations %}
+
+                {% for sim in recent_simulations %}
+
+                <tr>
+
+                    <td>{{ sim.user_id }}</td>
+
+                    <td>{{ sim.simulation_name }}</td>
+
+                    <td>{{ sim.score }}%</td>
+
+                    <td>
+
+                        <span class="badge bg-success">
+                            {{ sim.status }}
+                        </span>
+
+                    </td>
+
+                    <td>{{ sim.created_at.strftime("%d-%m-%Y %H:%M") }}</td>
+
+                </tr>
+
+                {% endfor %}
+
+            {% else %}
+
+                <tr>
+
+                    <td colspan="5" class="text-center">
+
+                        No simulations found.
+
+                    </td>
+
+                </tr>
+
+            {% endif %}
+
+        </tbody>
+
+    </table>
+
+    <div class="mt-4">
+
+        <a href="{{ url_for('dashboard.home') }}" class="btn btn-primary">
+
+            ← Back to Dashboard
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+
+        <div class="card-body text-center">
+
+            <h2>USB Drop Attack Result</h2>
+
+            <hr>
+
+            <h3>
+
+                Score:
+                <span class="text-primary">
+
+                    {{ score }}%
+
+                </span>
+
+            </h3>
+
+            <h5>
+
+                Correct:
+                {{ correct }}/{{ total }}
+
+            </h5>
+
+            <hr>
+
+            {% if score>=80 %}
+
+            <div class="alert alert-success">
+
+                Excellent! You know how to handle unknown USB devices.
+
+            </div>
+
+            {% elif score>=60 %}
+
+            <div class="alert alert-warning">
+
+                Good, but stay cautious with removable media.
+
+            </div>
+
+            {% else %}
+
+            <div class="alert alert-danger">
+
+                Never connect unknown USB drives to your computer.
+
+            </div>
+
+            {% endif %}
+
+            <a href="{{ url_for('dashboard.home') }}" class="btn btn-primary">
+
+                Back to Dashboard
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

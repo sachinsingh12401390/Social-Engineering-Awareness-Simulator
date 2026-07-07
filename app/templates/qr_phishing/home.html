@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <h2 class="text-center mb-4">
+                📱 QR Code Phishing (Quishing) Simulator
+            </h2>
+
+            <p class="text-center text-muted">
+                Scan is NOT required. Look at the destination URL below each QR code and decide whether it is Safe or
+                Phishing.
+            </p>
+
+            <form method="POST" action="{{ url_for('qr_phishing.result') }}">
+
+                {% for question in questions %}
+
+                {% set q = loop.index0 %}
+
+                <div class="card mb-4">
+
+                    <div class="card-body text-center">
+
+                        <img src="{{ question.image }}" class="img-fluid mb-3" width="180">
+
+                        <p class="text-muted">
+
+                            Destination URL:
+                            <br>
+
+                            <strong>
+
+                                {{ question.image.split("data=")[1] }}
+
+                            </strong>
+
+                        </p>
+
+                        <div class="form-check">
+
+                            <input class="form-check-input" type="radio" name="q{{ q }}" value="safe" required>
+
+                            <label class="form-check-label">
+
+                                ✅ Safe
+
+                            </label>
+
+                        </div>
+
+                        <div class="form-check">
+
+                            <input class="form-check-input" type="radio" name="q{{ q }}" value="phishing">
+
+                            <label class="form-check-label">
+
+                                🚨 Phishing
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+                <div class="text-center">
+
+                    <button class="btn btn-success btn-lg">
+
+                        Submit Answers
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+
+        <div class="card-body text-center">
+
+            <h2 class="mb-4">
+                📱 QR Phishing Result
+            </h2>
+
+            <hr>
+
+            <h3>
+
+                Your Score:
+                <span class="text-primary">
+                    {{ score }}%
+                </span>
+
+            </h3>
+
+            <h5 class="mt-3">
+
+                Correct Answers:
+                {{ correct }} / {{ total }}
+
+            </h5>
+
+            <hr>
+
+            {% if score >= 80 %}
+
+            <div class="alert alert-success">
+
+                <h4>🎉 Excellent!</h4>
+
+                <p>
+                    You can successfully identify malicious QR codes.
+                </p>
+
+            </div>
+
+            {% elif score >= 60 %}
+
+            <div class="alert alert-warning">
+
+                <h4>👍 Good!</h4>
+
+                <p>
+                    Always verify the destination before scanning unknown QR codes.
+                </p>
+
+            </div>
+
+            {% else %}
+
+            <div class="alert alert-danger">
+
+                <h4>⚠️ Be Careful!</h4>
+
+                <p>
+                    QR codes can hide dangerous phishing websites.
+                    Never scan QR codes from unknown sources.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+            <a href="{{ url_for('dashboard.home') }}" class="btn btn-primary mt-3">
+
+                ← Back to Dashboard
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

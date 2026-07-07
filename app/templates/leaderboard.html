@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">
+        🏆 Leaderboard
+    </h2>
+
+    <table class="table table-striped">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Total Score</th>
+                <th>Simulations</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        {% for user in leaderboard %}
+
+            <tr>
+
+                <td>{{ loop.index }}</td>
+
+                <td>{{ user.name }}</td>
+
+                <td>{{ user.email }}</td>
+
+                <td>{{ user.score }}</td>
+
+                <td>{{ user.count }}</td>
+
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

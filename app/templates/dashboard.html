@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div class="card shadow">
+
+                <div class="card-body">
+
+                    <h2 class="mb-3">
+                        Welcome, {{ user.name }}
+                    </h2>
+
+                    <p class="text-muted">
+                        <strong>Email:</strong> {{ user.email }}
+                    </p>
+
+                    <hr>
+
+                    <h4 class="mb-3">
+                        Start a Simulation
+                    </h4>
+
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+
+                        <a href="{{ url_for('url_checker.home') }}" class="btn btn-danger">
+                            🌐 URL Phishing Detection
+                        </a>
+                        <a href="{{ url_for('fake_login.home') }}" class="btn btn-danger">
+                            🔐 Fake Login Simulator
+                        </a>
+                        <a href="{{ url_for('sms.home') }}" class="btn btn-secondary">
+                            📱 SMS Phishing
+                        </a>
+                        <a href="{{ url_for('qr_phishing.home') }}" class="btn btn-dark">
+                            📱 QR Phishing
+                        </a>
+                        <a href="{{ url_for('file_security.home') }}" class="btn btn-success">
+                            📁 File Attachment Security
+                        </a>
+                        <a href="{{ url_for('analytics.home') }}" class="btn btn-secondary">
+                            📊 Analytics Dashboard
+                        </a>
+
+                        <a href="{{ url_for('usb.home') }}" class="btn btn-warning">
+                            💾 USB Security
+                        </a>
+
+                        <a href="{{ url_for('email.home') }}" class="btn btn-primary">
+                            📧 Email Phishing
+                        </a>
+
+                        <a href="{{ url_for('password.home') }}" class="btn btn-secondary">
+                            🔐 Password Analyzer
+                        </a>
+
+                        <a href="{{ url_for('quiz.home') }}" class="btn btn-danger">
+                            🧠 Cyber Security Quiz
+                        </a>
+
+                        <a href="{{ url_for('leaderboard.home') }}" class="btn btn-success">
+                            🏆 Leaderboard
+                        </a>
+
+                        <a href="{{ url_for('certificate.home') }}" class="btn btn-warning">
+                            🎓 Certificate
+                        </a>
+
+                        <a href="{{ url_for('profile.home') }}" class="btn btn-info">
+                            👤 My Profile
+                        </a>
+
+                        <a href="{{ url_for('admin.home') }}" class="btn btn-dark">
+                            ⚙️ Admin Panel
+                        </a>
+
+                    </div>
+
+                    <hr>
+
+                    <h4 class="mb-3">
+                        Simulation History
+                    </h4>
+
+                    <table class="table table-bordered table-striped">
+
+                        <thead class="table-dark">
+
+                            <tr>
+                                <th>Simulation</th>
+                                <th>Score</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            {% if simulations %}
+
+                            {% for sim in simulations %}
+
+                            <tr>
+
+                                <td>{{ sim.simulation_name }}</td>
+
+                                <td>{{ sim.score }}%</td>
+
+                                <td>
+
+                                    {% if sim.status == "Completed" %}
+
+                                    <span class="badge bg-success">
+                                        {{ sim.status }}
+                                    </span>
+
+                                    {% else %}
+
+                                    <span class="badge bg-secondary">
+                                        {{ sim.status }}
+                                    </span>
+
+                                    {% endif %}
+
+                                </td>
+
+                                <td>
+                                    {{ sim.created_at.strftime("%d-%m-%Y %H:%M") }}
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                            {% else %}
+
+                            <tr>
+
+                                <td colspan="4" class="text-center text-muted py-4">
+                                    No simulations completed yet.
+                                </td>
+
+                            </tr>
+
+                            {% endif %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

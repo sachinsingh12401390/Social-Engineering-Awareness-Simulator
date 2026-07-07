@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-5">
+
+            <div class="card shadow">
+
+                <div class="card-body">
+
+                    <h2 class="text-center text-danger mb-4">
+                        Gmail Login
+                    </h2>
+
+                    <form method="POST" action="{{ url_for('fake_login.result') }}">
+
+                        <input type="hidden" name="platform" value="Google">
+
+                        <div class="mb-3">
+                            <label>Email</label>
+
+                            <input type="email" class="form-control" placeholder="Enter email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Password</label>
+
+                            <input type="password" class="form-control" placeholder="Enter password" required>
+                        </div>
+
+                        <button class="btn btn-danger w-100">
+                            Sign In
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

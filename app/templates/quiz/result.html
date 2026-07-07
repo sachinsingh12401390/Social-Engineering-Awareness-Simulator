@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h2 class="mb-4">
+                        Quiz Completed
+                    </h2>
+
+                    <hr>
+
+                    <h3>
+                        Your Score
+                    </h3>
+
+                    <h1 class="display-4 text-primary">
+                        {{ score }}%
+                    </h1>
+
+                    <hr>
+
+                    {% if score == 100 %}
+
+                    <div class="alert alert-success">
+                        <h4>🏆 Excellent!</h4>
+                        <p>You answered every question correctly.</p>
+                    </div>
+
+                    {% elif score >= 80 %}
+
+                    <div class="alert alert-success">
+                        <h4>🎉 Great Job!</h4>
+                        <p>Your cybersecurity knowledge is strong.</p>
+                    </div>
+
+                    {% elif score >= 60 %}
+
+                    <div class="alert alert-warning">
+                        <h4>👍 Good Work!</h4>
+                        <p>You have good knowledge but there is room for improvement.</p>
+                    </div>
+
+                    {% elif score >= 40 %}
+
+                    <div class="alert alert-warning">
+                        <h4>📚 Keep Learning!</h4>
+                        <p>Review cybersecurity basics and try again.</p>
+                    </div>
+
+                    {% else %}
+
+                    <div class="alert alert-danger">
+                        <h4>⚠ Needs Improvement</h4>
+                        <p>Please study cybersecurity awareness before attempting again.</p>
+                    </div>
+
+                    {% endif %}
+
+                    <a href="{{ url_for('quiz.home') }}" class="btn btn-success">
+                        Try Again
+                    </a>
+
+                    <a href="{{ url_for('dashboard.home') }}" class="btn btn-primary">
+                        Back to Dashboard
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

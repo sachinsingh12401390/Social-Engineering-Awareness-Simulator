@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <h2 class="mb-4">
+                💾 USB Drop Attack Simulator
+            </h2>
+
+            <form method="POST" action="{{ url_for('usb.result') }}">
+
+                {% for q in questions %}
+
+                <div class="card mb-4">
+
+                    <div class="card-body">
+
+                        <h5>{{ loop.index }}. {{ q.question }}</h5>
+
+                        {% for option in q.options %}
+
+                        <div class="form-check">
+
+                            <input class="form-check-input" type="radio" name="q{{ loop.parent.index0 }}"
+                                value="{{ loop.index0 }}" required>
+
+                            <label class="form-check-label">
+
+                                {{ option }}
+
+                            </label>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+                <button class="btn btn-success w-100">
+
+                    Submit Quiz
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

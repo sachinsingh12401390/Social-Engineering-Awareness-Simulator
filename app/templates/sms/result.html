@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+
+        <div class="card-body text-center">
+
+            <h2 class="mb-4">
+                📱 SMS Phishing Result
+            </h2>
+
+            <hr>
+
+            <h3>
+
+                Your Score:
+                <span class="text-primary">
+                    {{ score }}%
+                </span>
+
+            </h3>
+
+            <h5 class="mt-3">
+
+                Correct Answers:
+                {{ correct }} / {{ total }}
+
+            </h5>
+
+            <hr>
+
+            {% if score >= 80 %}
+
+            <div class="alert alert-success">
+
+                <h4>🎉 Excellent!</h4>
+
+                <p>
+                    You can easily identify phishing SMS messages.
+                </p>
+
+            </div>
+
+            {% elif score >= 60 %}
+
+            <div class="alert alert-warning">
+
+                <h4>👍 Good Job!</h4>
+
+                <p>
+                    Be more careful before clicking links in SMS messages.
+                </p>
+
+            </div>
+
+            {% else %}
+
+            <div class="alert alert-danger">
+
+                <h4>⚠️ Needs Improvement</h4>
+
+                <p>
+                    Never click suspicious links received through SMS.
+                    Always verify the sender first.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+            <a href="{{ url_for('dashboard.home') }}" class="btn btn-primary mt-3">
+
+                ← Back to Dashboard
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

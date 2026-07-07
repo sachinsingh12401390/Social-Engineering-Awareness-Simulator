@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4">
+        📊 Analytics Dashboard
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow border-primary">
+                <div class="card-body text-center">
+                    <h5>Total Simulations</h5>
+                    <h2 class="text-primary">{{ total }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow border-success">
+                <div class="card-body text-center">
+                    <h5>Average Score</h5>
+                    <h2 class="text-success">{{ average }}%</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow border-warning">
+                <div class="card-body text-center">
+                    <h5>User</h5>
+                    <h2 class="text-warning">{{ user.username }}</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card shadow mt-4">
+
+        <div class="card-header bg-dark text-white">
+            Performance Chart
+        </div>
+
+        <div class="card-body">
+            <canvas id="scoreChart"></canvas>
+        </div>
+
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{{ url_for('dashboard.home') }}" class="btn btn-primary">
+            ← Back to Dashboard
+        </a>
+    </div>
+
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Store Flask data safely -->
+{{ labels|tojson|safe }}
+{{ scores|tojson|safe }}
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const labels = JSON.parse('{{ labels|tojson|safe }}');
+        const scores = JSON.parse('{{ scores|tojson|safe }}');
+
+        const ctx = document.getElementById("scoreChart").getContext("2d");
+
+        new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Score (%)",
+                    data: scores,
+                    backgroundColor: [
+                        "#0d6efd",
+                        "#198754",
+                        "#ffc107",
+                        "#dc3545",
+                        "#6f42c1",
+                        "#20c997",
+                        "#fd7e14",
+                        "#6610f2"
+                    ],
+                    borderColor: "#212529",
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+    });
+
+</script>
+
+{% endblock %}

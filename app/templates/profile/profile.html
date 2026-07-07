@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <h2>My Profile</h2>
+
+            <hr>
+
+            <p><strong>Name:</strong> {{ user.name }}</p>
+
+            <p><strong>Email:</strong> {{ user.email }}</p>
+
+            <a href="{{ url_for('dashboard.home') }}" class="btn btn-primary">
+                Back to Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

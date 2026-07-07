@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h2 class="mb-3">
+                        Password Security Analysis
+                    </h2>
+
+                    <hr>
+
+                    <h4>
+                        Your Password
+                    </h4>
+
+                    <div class="alert alert-secondary">
+                        <strong>{{ password }}</strong>
+                    </div>
+
+                    <hr>
+
+                    <h3>
+                        Score:
+                        <span class="text-primary">
+                            {{ score }}%
+                        </span>
+                    </h3>
+
+                    <h4 class="mb-4">
+                        Strength:
+
+                        {% if strength == "Very Strong" %}
+                        <span class="badge bg-success">
+                            {{ strength }}
+                        </span>
+
+                        {% elif strength == "Strong" %}
+                        <span class="badge bg-primary">
+                            {{ strength }}
+                        </span>
+
+                        {% elif strength == "Medium" %}
+                        <span class="badge bg-warning text-dark">
+                            {{ strength }}
+                        </span>
+
+                        {% elif strength == "Weak" %}
+                        <span class="badge bg-danger">
+                            {{ strength }}
+                        </span>
+
+                        {% else %}
+                        <span class="badge bg-dark">
+                            {{ strength }}
+                        </span>
+                        {% endif %}
+
+                    </h4>
+
+                    <hr>
+
+                    <h4 class="mb-3">
+                        Security Recommendations
+                    </h4>
+
+                    {% if feedback %}
+
+                    <ul class="list-group mb-4">
+
+                        {% for item in feedback %}
+
+                        <li class="list-group-item text-start">
+                            ⚠️ {{ item }}
+                        </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                    {% else %}
+
+                    <div class="alert alert-success">
+                        🎉 Excellent! Your password meets all recommended security requirements.
+                    </div>
+
+                    {% endif %}
+
+                    <a href="{{ url_for('password.home') }}" class="btn btn-secondary">
+                        Check Another Password
+                    </a>
+
+                    <a href="{{ url_for('dashboard.home') }}" class="btn btn-primary">
+                        Back to Dashboard
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

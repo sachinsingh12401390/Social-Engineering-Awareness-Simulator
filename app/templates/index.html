@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+            🛡️ Social Engineering Awareness Simulator
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+
+<section class="container text-center mt-5">
+
+    <h1 class="display-4 fw-bold">
+        Social Engineering Awareness Simulator
+    </h1>
+
+    <p class="lead mt-3">
+        Learn how to identify phishing emails, QR scams,
+        USB attacks, OTP fraud, and social engineering techniques
+        through interactive simulations.
+    </p>
+
+    <button class="btn btn-primary btn-lg mt-3">
+        Start Simulation
+    </button>
+
+</section>
+
+<section class="container mt-5">
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h3>📧</h3>
+
+                    <h4>Phishing Email</h4>
+
+                    <p>Identify fake emails and malicious links.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h3>📱</h3>
+
+                    <h4>QR Code Scam</h4>
+
+                    <p>Learn to detect fraudulent QR codes.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h3>💾</h3>
+
+                    <h4>USB Attack</h4>
+
+                    <p>Understand the dangers of unknown USB devices.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

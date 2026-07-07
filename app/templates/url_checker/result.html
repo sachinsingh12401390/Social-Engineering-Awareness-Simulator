@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h2 class="mb-4">
+                        URL Analysis Result
+                    </h2>
+
+                    <hr>
+
+                    <h4>
+                        URL Checked
+                    </h4>
+
+                    <p class="text-primary">
+                        {{ url }}
+                    </p>
+
+                    <hr>
+
+                    <h3>
+
+                        Security Score
+
+                        <span class="text-primary">
+
+                            {{ score }}%
+
+                        </span>
+
+                    </h3>
+
+                    <br>
+
+                    {% if status == "Safe" %}
+
+                    <div class="alert alert-success">
+
+                        <h4>🟢 Safe Website</h4>
+
+                        <p>No major phishing indicators detected.</p>
+
+                    </div>
+
+                    {% elif status == "Suspicious" %}
+
+                    <div class="alert alert-warning">
+
+                        <h4>🟡 Suspicious Website</h4>
+
+                        <p>Some phishing indicators were detected.</p>
+
+                    </div>
+
+                    {% else %}
+
+                    <div class="alert alert-danger">
+
+                        <h4>🔴 High Risk Website</h4>
+
+                        <p>This URL contains multiple phishing indicators.</p>
+
+                    </div>
+
+                    {% endif %}
+
+                    <hr>
+
+                    <h4>
+
+                        Detected Issues
+
+                    </h4>
+
+                    {% if risks %}
+
+                    <ul class="list-group mb-4">
+
+                        {% for risk in risks %}
+
+                        <li class="list-group-item text-start">
+
+                            ⚠️ {{ risk }}
+
+                        </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                    {% else %}
+
+                    <div class="alert alert-success">
+
+                        No suspicious indicators were detected.
+
+                    </div>
+
+                    {% endif %}
+
+                    <a href="{{ url_for('url_checker.home') }}" class="btn btn-primary">
+
+                        Analyze Another URL
+
+                    </a>
+
+                    <a href="{{ url_for('dashboard.home') }}" class="btn btn-secondary">
+
+                        Back to Dashboard
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
